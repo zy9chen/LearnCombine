@@ -11,8 +11,13 @@ struct ContentView: View {
     @StateObject var viewModel = ViewModel()
     
     var body: some View {
-        Text(viewModel.time)
-            .padding()
+        VStack {
+            Text(viewModel.time)
+                .padding()
+            List(viewModel.users) { user in
+                Text(user.name)
+            }
+        }
     }
 }
 

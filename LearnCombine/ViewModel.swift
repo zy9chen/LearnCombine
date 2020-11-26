@@ -10,10 +10,11 @@ import Combine
 
 final class ViewModel: ObservableObject {
     @Published var time = ""
-    private var anyCancellable: AnyCancellable?
+    @Published var users = [User]()
+    private var cancellables = Set<AnyCancellable>()
     
     let formatter: DateFormatter = {
-       let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .medium
         return dateFormatter
     }()
@@ -23,11 +24,36 @@ final class ViewModel: ObservableObject {
     }
     
     private func setupPublishers() {
-        anyCancellable = Timer.publish(every: 1, on: .main, in: .default)
+        setupTimerPublisher()
+        setupDataTaskPublisher()
+    }
+    
+    private func setupDataTaskPublisher() {
+        let url = URL(string: "https://jsonplaceholder.typicode.com/users")!
+        URLSession.shared.dataTaskPublisher(for: url)
+            .tryMap { (data, response) in
+                guard let httpReponse = response as? HTTPURLResponse,
+                      httpReponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
+                }
+                return data
+            }
+            .decode(type: [User].self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in }) { users in
+                self.users = users
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setupTimerPublisher() {
+        Timer.publish(every: 1, on: .main, in: .default)
             .autoconnect()
             .receive(on: RunLoop.main)
             .sink { value in
                 self.time = self.formatter.string(from: value)
             }
+            .store(in: &cancellables)
     }
+    
 }
