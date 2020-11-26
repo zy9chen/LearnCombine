@@ -11,6 +11,7 @@
 		0C820BBE256F390F00C87273 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C820BBD256F390F00C87273 /* ContentView.swift */; };
 		0C820BC0256F391000C87273 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C820BBF256F391000C87273 /* Assets.xcassets */; };
 		0C820BC3256F391000C87273 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C820BC2256F391000C87273 /* Preview Assets.xcassets */; };
+		0C820BCC256F39C500C87273 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C820BCB256F39C500C87273 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		0C820BBF256F391000C87273 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C820BC2256F391000C87273 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0C820BC4256F391000C87273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C820BCB256F39C500C87273 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				0C820BBB256F390F00C87273 /* LearnCombineApp.swift */,
 				0C820BBD256F390F00C87273 /* ContentView.swift */,
+				0C820BCB256F39C500C87273 /* ViewModel.swift */,
 				0C820BBF256F391000C87273 /* Assets.xcassets */,
 				0C820BC4256F391000C87273 /* Info.plist */,
 				0C820BC1256F391000C87273 /* Preview Content */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C820BBE256F390F00C87273 /* ContentView.swift in Sources */,
+				0C820BCC256F39C500C87273 /* ViewModel.swift in Sources */,
 				0C820BBC256F390F00C87273 /* LearnCombineApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
